@@ -1,0 +1,14 @@
+--- 
+services: 
+  nodejs: 
+    deploy: 
+      replicas: 4
+      update_config: 
+        delay: 10s
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+    image: nodejs:1.2
+    ports: 
+      - "80:8080"
+version: "3.1"

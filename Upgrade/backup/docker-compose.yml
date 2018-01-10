@@ -1,0 +1,10 @@
+version: '3'
+services:
+  httpd:
+    build:
+      context: .
+      dockerfile: httpddocker
+    ports:
+      - 8000:80
+
+

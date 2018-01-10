@@ -1,0 +1,13 @@
+version: '3'
+services:
+  httpd:
+    image: httpd:1.1
+    ports:
+      - 80:80
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
