@@ -1,0 +1,22 @@
+FROM ubuntu:16.04
+RUN apt-get update
+RUN apt-get install openjdk-8-jdk -y
+#RUN apt-get install wget -y
+RUN apt-get install tar -y
+RUN useradd solr
+RUN mkdir -p /opt/solr
+WORKDIR /opt/solr
+#RUN wget http://archive.apache.org/dist/lucene/solr/7.2.0/solr-7.2.0.tgz
+ADD solr-7.2.0.tgz /opt/solr
+#RUN tar -xvf solr-7.2.0.tgz .
+RUN chown -R solr:solr solr-7.2.0
+USER solr
+RUN whoami
+EXPOSE 8983
+#ENTRYPOINT [ "/opt/solr/solr-7.2.0/bin/solr","start" ]
+#CMD [ "start" ]
+#CMD [ "-c" ]
+#CMD ["solr-foreground"]
+#CMD [ "/opt/solr/solr-7.2.0/bin/solr", "start" ]
+
+CMD cd /opt/solr/solr-7.2.0/bin ; ./solr start -force -f

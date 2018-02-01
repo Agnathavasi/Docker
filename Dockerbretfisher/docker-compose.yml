@@ -1,0 +1,17 @@
+services: 
+  drupal: 
+    image: "drupal:8.2-apache"
+    ports: 
+      - "8002:80"
+    restart: always
+    volumes: 
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/sites
+  postgress: 
+    environment: 
+      POSTGRES_PASSWORD: example
+    image: "postgres:9.6"
+    restart: always
+version: "3"
